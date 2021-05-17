@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <link rel="stylesheet" href="ejercicio4.css">
+</head>
+
+<body>
+    <script src="ejercicio4.js"></script>
+
+    <center>
+
+        <h1>Formulario registro</h1>
+        <form onsubmit="return validar()">
+            <label>Usuario: <span style="color: red;">*</span></label>
+            <input type="text" name="usuario" id="usuario"><br>
+            <label>Contraseña:<span style="color: red;">*</span></label>
+            <input type="password" name="contrasena" id="contrasena" required><br>
+            <label>Repita la Contraseña:<span style="color: red;">*</span></label>
+            <input type="password" name="contrasena2" id="contrasena2" required><br>
+            <label>Email:<span style="color: red;">*</span></label>
+            <input type="email" name="email" id="email" required><br>
+            <label>Nombre:</label>
+            <input type="text" name="nombre" id="nombre"><br>
+            <label>Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos"><br>
+            <label>Edad:</label>
+            <input type="number" name="edad" id="edad"><br>
+            <label>Teléfono:<span style="color: red;">*</span></label>
+            <input type="tel" name="telefno" id="telefono" required><br>
+            <input type="submit" style="color: white;background-color: orange;" name="enviar" id="enviar" value="Registrarse">
+
+            <div id="error" class="error"></div>
+
+        </form>
+    </center>
+</body>
+
+</html>
