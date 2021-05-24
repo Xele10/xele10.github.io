@@ -1,0 +1,26 @@
+body {
+  background: #EAE3CB;
+}
+
+ul {
+  margin: 0 auto;
+  margin-top:50px;
+  width: 330px;
+  padding: 0;
+}
+
+ul li {
+  width: 105px;
+  list-style: none;
+  display: inline-block;
+}
+
+.borde
+{
+  border: black dashed 4px;
+}
+
+.sinBorde
+{
+  border-style: none;
+}

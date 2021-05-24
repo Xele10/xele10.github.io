@@ -1,0 +1,98 @@
+* {
+    margin: 10px;
+    padding: 10px;
+    background-color: beige;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+#contenedor {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: cadetblue;
+    text-align: center;
+}
+
+.emisor {
+    color: indianred;
+    text-align: right;
+    font-size: 16px;
+}
+
+.receptor {
+    color: midnightblue;
+    text-align: left;
+    font-size: 16px;
+}
+
+
+/*
+#lector_mensajes {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90vh;
+    width: 30vw;
+    background-color: #03151d;
+    border-radius: 10px;
+}
+
+#titulo {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    height: 30px;
+    font-size: 1.2em;
+    font-weight: bolder;
+    margin-top: 15px;
+    color: #91aaae;
+    background-color: #243035;
+    color: white;
+}
+
+#titulo:nth-child(2) {
+    padding-left: 10px;
+}
+
+#mensajes {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 10px 10px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.mensaje_emisor {
+    background-color: #243035;
+    align-self: flex-start;
+    margin-left: 10px;
+    color: white;
+    padding: 7px;
+    border-radius: 10px;
+    max-width: 65%;
+}
+
+.mensaje_receptor {
+    align-self: flex-end;
+    background-color: #370626;
+    max-width: 65%;
+    margin-right: 10px;
+    color: white;
+    padding: 7px;
+    border-radius: 10px;
+}
+*/
