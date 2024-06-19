@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, papel o tijera</title>
+    <style>
+        .img1{
+            width: 100px;
+        }
+        #divBotones, #container, body{
+            text-align: center;
+        }
+        .btn{
+            padding:6px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        
+        <div id="divBotones">
+            <div>
+                <img src="images/pulsa_tu_eleccion.gif" alt="Elije una opción!!" width="700"/>
+            </div>
+            <button class="btn" id="piedra" onclick="lanzar(this.id)"><img src="images/piedra.jpg" class="img1" alt=""/></button>
+            <button class="btn" id="papel" onclick="lanzar(this.id)"><img src="images/papel.jpg" class="img1" alt=""/></button>
+            <button class="btn" id="tijera" onclick="lanzar(this.id)"><img src="images/Tijera.jpg" class="img1" alt=""/></button>
+            <button class="btn" id="lagarto" onclick="lanzar(this.id)"><img src="images/lagarto.jpg" class="img1" alt=""/></button>
+            <button class="btn" id="spoke" onclick="lanzar(this.id)"><img src="images/spoke.jpg" class="img1" alt=""/></button>
+        </div>
+        <div id="divMos" style="display: none;">
+
+        </div>
+        <div id="imgJuego">
+            <img src="images/piedra-papel-tijera-lagarto-spock.png" width="400px"/>
+        </div>
+        <div id="divComp" style="display:none;">
+            <h3>El ordenador seleccionó:</h3>
+            <div >
+                <img id="imgComp"src="" alt="" class="img1">
+            </div>
+            <h3 id="resultado"></h3>
+        </div>
+        <div id="divMarcador">
+            <h3>SCORE</h3>
+            <div style="text-align: right;margin: auto;width: 260px;">
+                <label for="txtPuntJug">Tu : </label>
+                <input type="text" id="txtPuntJug" value=0>
+                <br/>
+                <br/>
+                <label for="txtPuntCom">Ordenador: </label>
+                <input type="text" id="txtPuntCom" value=0>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        var selecJugador ="";        
+        var selecComp="";
+        var tirada=["piedra","papel","tijera","lagarto","spoke"];
+        var txtResultado = document.getElementById("resultado");
+        var puntJugador=0;
+        var puntComp =0;
+
+        function lanzar(id){
+            selecJugador=id;
+            console.log(selecJugador);
+            selecComp = tirada[Math.floor(Math.random()*5)];
+            document.getElementById("imgComp").src="images/"+selecComp+".jpg";
+            console.log(selecComp);
+            var resultado= evalua(selecJugador,selecComp);
+            if(resultado==-1){
+                txtResultado.innerText="Empate!!";
+            }
+            else if(resultado==0){
+                txtResultado.innerText="Perdiste";
+                puntComp++;
+                document.getElementById("txtPuntCom").value=puntComp;
+            }
+            else if(resultado==1){
+                txtResultado.innerText="Ganaste";
+                puntJugador++;
+                document.getElementById("txtPuntJug").value=puntJugador;
+            }
+            document.getElementById("divComp").style.display="block";
+            document.getElementById("imgJuego").style.display="none";
+            if(document.getElementById("txtPuntJug").value==5){
+                document.getElementById("divBotones").style.display="none";
+                document.getElementById("divMos").style.display="block";
+                document.getElementById("divMos").innerHTML = "<img src='images/ganaste.gif'> <br><br><h3>Refresca la página para volver a jugar</h3>";
+            }
+            if(document.getElementById("txtPuntCom").value==5){
+                document.getElementById("divBotones").style.display="none";
+                document.getElementById("divMos").style.display="block";
+                document.getElementById("divMos").innerHTML = "<img src='images/perdiste.gif'> <br><br><h3>Refresca la página para volver a jugar</h3>";
+            }
+        }
+
+        function evalua(jugador,comp){
+            if(jugador==comp){
+                return -1;
+            }
+            else if(jugador=="piedra"){
+                if(comp=="papel"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="tijera"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="lagarto"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="spoke"){
+                    //gana comp
+                    return 0;
+                }
+            }
+            else if(jugador=="papel"){
+                if(comp=="tijera"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="piedra"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="lagarto"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="spoke"){
+                    //gana jugador
+                    return 1;
+                }
+            }
+            else if(jugador=="tijera"){
+                if(comp=="piedra"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="papel"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="lagarto"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="spoke"){
+                    //gana comp
+                    return 0;
+                }
+            }
+            else if(jugador=="lagarto"){
+                if(comp=="piedra"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="papel"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="tijera"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="spoke"){
+                    //gana jugador
+                    return 1;
+                }
+            }
+            else if(jugador=="spoke"){
+                if(comp=="piedra"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="papel"){
+                    //gana comp
+                    return 0;
+                }
+                if(comp=="tijera"){
+                    //gana jugador
+                    return 1;
+                }
+                if(comp=="lagarto"){
+                    //gana comp
+                    return 0;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

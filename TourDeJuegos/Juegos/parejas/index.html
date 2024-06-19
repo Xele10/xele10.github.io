@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device‐width, initial‐scale=1.0">
+    <title>Juego de las parejas</title>
+
+    <!-- links css -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <!-- links js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+
+    <script type="text/javascript">
+        var bancoImagenes = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"];
+        var imagenesAleatorias;
+        var contadorAciertos;
+        var contadorIntentos;
+        var contadorClicks;
+        var img1ra;
+        var img2da;
+        var segundoClick;
+        var puntuacion;
+
+        function inicializar() {
+            imagenesAleatorias = new Array();
+            imagenesAleatorias = bancoImagenes.sort(function() {
+                return Math.random() - 0.5
+            }); // desordena el array de bancoImagenes y lo mete en imagenesAleatorias
+            contadorAciertos = 0;
+            contadorIntentos = 0;
+            contadorClicks = 0;
+            segundoClick = false;
+
+            for (var i = 0; i < bancoImagenes.length; i++) {
+                $("#" + i).attr("src", "images/imgOculta.jpg");
+            }
+
+        }
+
+        function girarImagen(numero) {
+            if (segundoClick == false && $("#" + numero).attr("src") == "images/imgOculta.jpg") {
+                $("#" + numero).attr("src", "images/" + imagenesAleatorias[numero]);
+                contadorClicks++;
+                controlarClicks(numero);
+                switch (contadorClicks) {
+                    case 1:
+                        img1ra = numero;
+                        break;
+                    case 2:
+                        img2da = numero;
+                        break;
+
+                }
+
+            }
+
+            if (contadorClicks == 2) {
+                segundoClick = true;
+                if (bancoImagenes[img1ra] == bancoImagenes[img2da]) {
+                    controlarAciertos++;
+                    segundoClick = false;
+                    contadorClicks = 0;
+                    Command: toastr["success"]("Sumamos un acierto", "Has acertado")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                } else {
+                    contadorIntentos++;
+                    setTimeout(
+                        function() {
+                            $("#" + img1ra).attr("src", "images/imgOculta.jpg");
+                            $("#" + img2da).attr("src", "images/imgOculta.jpg");
+                            segundoClick = false;
+                            contadorClicks = 0;
+                            Command: toastr["error"]("no se suma punto", "Has fallado")
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-full-width",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        }, 1500);
+                }
+                controlarIntentos();
+            }
+        }
+
+        function controlarClicks(numero) {
+
+        }
+
+        function controlarIntentos() {
+            var intentos = $("#divContadorIntentos").val();
+            contadorIntentos = contadorIntentos + 1;
+            $("#divContadorIntentos").text(controlarIntentos);
+
+        }
+
+        function controlarAciertos() {
+
+        }
+
+        function finalizar() {
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <h1 style="text-align: center"> Juego de las parejas </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+
+                <h3>Número de intentos</h3>
+                <div id="divContadorIntentos">0 </div> <br /><br />
+
+                <h3>Ranking</h3>
+                <div id="divContadorAciertos"> </div> <br /><br />
+
+                <button type="button" class="btn btn-danger btn-lg" onclick="inicializar()">Nueva partida</button>
+
+
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+
+                <table class="table-condensed tabla">
+
+                    <tr>
+                        <td class="celda"><img src="images/imgOculta.jpg" id="0" class="imagen" onclick="girarImagen(0)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="1" class="imagen" onclick="girarImagen(1)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="2" class="imagen" onclick="girarImagen(2)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="3" class="imagen" onclick="girarImagen(3)"> </td>
+                    </tr>
+
+                    <tr>
+                        <td class="celda"><img src="images/imgOculta.jpg" id="4" class="imagen" onclick="girarImagen(4)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="5" class="imagen" onclick="girarImagen(5)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="6" class="imagen" onclick="girarImagen(6)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="7" class="imagen" onclick="girarImagen(7)"> </td>
+                    </tr>
+
+                    <tr>
+                        <td class="celda"><img src="images/imgOculta.jpg" id="8" class="imagen" onclick="girarImagen(8)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="9" class="imagen" onclick="girarImagen(9)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="10" class="imagen" onclick="girarImagen(10)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="11" class="imagen" onclick="girarImagen(11)"> </td>
+                    </tr>
+
+                    <tr>
+                        <td class="celda"><img src="images/imgOculta.jpg" id="12" class="imagen" onclick="girarImagen(12)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="13" class="imagen" onclick="girarImagen(13)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="14" class="imagen" onclick="girarImagen(14)"> </td>
+
+                        <td class="celda"><img src="images/imgOculta.jpg" id="15" class="imagen" onclick="girarImagen(15)"> </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            inicializar();
+        });
+    </script>
+</body>
+
+</html>

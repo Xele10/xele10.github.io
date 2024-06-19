@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device‐width, initial‐scale=1.0">
+    <title>Juego de las parejas</title>
+
+    <!-- links css -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- links js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+
+    <script type="text/javascript">
+        var bancoImagenes = ["img0.png", "img1.png", "img2.png", "img3.png", "img4.png", "img5.png", "img6.png", "img7.png", "img0.png", "img1.png", "img2.png", "img3.png", "img4.png", "img5.png", "img6.png", "img7.png"];
+        var imagenesAleatorias;
+        var contadorAciertos;
+        var contadorIntentos;
+        var contadorClicks;
+        var img1ra;
+        var img2da;
+        var segundoClick;
+        var primerID;
+        var segundoID;
+        var intentos = 0;
+
+        function inicializar() {
+            imagenesAleatorias = new Array();
+            imagenesAleatorias = bancoImagenes.sort(function() {
+                return Math.random() - 0.5
+            }); // desordena el array de bancoImagenes y lo mete en imagenesAleatorias
+            contadorAciertos = 0;
+            contadorClicks = 0;
+            segundoClick = false;
+            intentos = 0;
+
+            for (var i = 0; i < bancoImagenes.length; i++) {
+                $("#" + i).attr("src", "images/unknown.png");
+            }
+        }
+
+        function girarImagen(numero) {
+            if (segundoClick == false && $("#" + numero).attr("src") == "images/unknown.png") {
+                $("#" + numero).attr("src", "images/" + imagenesAleatorias[numero]);
+                contadorClicks++;
+                controlarClicks(numero);
+            }
+        }
+
+        function controlarClicks(numero) {
+            if (contadorClicks == 1) {
+                primerID = numero;
+            } else {
+                if (contadorClicks == 2) {
+                    segundoID = numero;
+                    segundoClick = true;
+                    if (imagenesAleatorias[primerID] == imagenesAleatorias[segundoID]) {
+                        segundoClick = false;
+
+                    } else {
+                        setTimeout(
+                            function() {
+                                $("#" + primerID).attr("src", "images/unknown.png");
+                                $("#" + segundoID).attr("src", "images/unknown.png");
+                                segundoClick = false;
+                            }, 1000);
+                        intentos++;
+                        $("#divContadorIntentos").html(intentos);
+                    }
+                    contadorClicks = 0;
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <h1 style="text-align: center"> Juego de las parejas </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+
+                <h3>Número de fallos</h3>
+                <div id="divContadorIntentos"> </div> <br /><br />
+
+                <button type="button" class="btn btn-warning btn-lg" onclick="inicializar()">Nueva partida</button>
+
+
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+
+                <table class="table-condensed tabla">
+
+                    <tr>
+                        <td><img src="images/unknown.png" id="0" height="200px" width="200px" onclick="girarImagen(0)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="1" height="200px" width="200px" onclick="girarImagen(1)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="2" height="200px" width="200px" onclick="girarImagen(2)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="3" height="200px" width="200px" onclick="girarImagen(3)">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><img src="images/unknown.png" id="4" height="200px" width="200px" onclick="girarImagen(4)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="5" height="200px" width="200px" onclick="girarImagen(5)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="6" height="200px" width="200px" onclick="girarImagen(6)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="7" height="200px" width="200px" onclick="girarImagen(7)">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><img src="images/unknown.png" id="8" height="200px" width="200px" onclick="girarImagen(8)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="9" height="200px" width="200px" onclick="girarImagen(9)">
+                        </td>
+
+                        <td><img src="images/unknown.png" id="10" height="200px" width="200px" onclick="girarImagen(10)"> </td>
+
+                        <td><img src="images/unknown.png" id="11" height="200px" width="200px" onclick="girarImagen(11)"> </td>
+                    </tr>
+
+                    <tr>
+                        <td><img src="images/unknown.png" id="12" height="200px" width="200px" onclick="girarImagen(12)"> </td>
+
+                        <td><img src="images/unknown.png" id="13" height="200px" width="200px" onclick="girarImagen(13)"> </td>
+
+                        <td><img src="images/unknown.png" id="14" height="200px" width="200px" onclick="girarImagen(14)"> </td>
+
+                        <td><img src="images/unknown.png" id="15" height="200px" width="200px" onclick="girarImagen(15)"> </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            inicializar();
+        });
+    </script>
+</body>
+
+</html>
