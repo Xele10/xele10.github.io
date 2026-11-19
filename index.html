@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#4a90e2">
     <title>🌐 Proyectos Xele10</title>
+
     <style>
         :root {
             --c1: rgb(75, 192, 182);
@@ -27,7 +29,9 @@
             }
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -104,9 +108,18 @@
             outline: none;
         }
 
-        .card:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
-        .card:hover::before { transform: translateX(0); }
-        .card:active { transform: scale(.97); }
+        .card:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: -6px;
+        }
+
+        .card:hover::before {
+            transform: translateX(0);
+        }
+
+        .card:active {
+            transform: scale(.97);
+        }
 
         .card .icon,
         .card .name {
@@ -114,7 +127,10 @@
             z-index: 2;
         }
 
-        .card .icon { font-size: 40px; line-height: 1; }
+        .card .icon {
+            font-size: 40px;
+            line-height: 1;
+        }
 
         .card .name {
             font-size: 15px;
@@ -124,13 +140,14 @@
         }
 
         /* Variantes de color */
-        .c-green  { --card-a: #11998e; --card-b: #38ef7d; }
-        .c-purple { --card-a: #7f00ff; --card-b: #e100ff; }
-        .c-orange { --card-a: #f12711; --card-b: #f5af19; }
-        .c-pink   { --card-a: #ee0979; --card-b: #ff6a00; }
-        .c-dark   { --card-a: #232526; --card-b: #546e7a; }
-        .c-teal   { --card-a: #0f766e; --card-b: #2dd4bf; }
-        .c-indigo { --card-a: #3730a3; --card-b: #818cf8; }
+
+        .c-green    { --card-a: #11998e; --card-b: #38ef7d; }
+        .c-purple   { --card-a: #7f00ff; --card-b: #e100ff; }
+        .c-orange   { --card-a: #f12711; --card-b: #f5af19; }
+        .c-pink     { --card-a: #ee0979; --card-b: #ff6a00; }
+        .c-dark     { --card-a: #232526; --card-b: #546e7a; }
+        .c-teal     { --card-a: #0f766e; --card-b: #2dd4bf; }
+        .c-indigo   { --card-a: #3730a3; --card-b: #818cf8; }
         .c-blue     { --card-a: #1565c0; --card-b: #42a5f5; }
         .c-red      { --card-a: #b71c1c; --card-b: #ff5252; }
         .c-yellow   { --card-a: #f9a825; --card-b: #fff176; }
@@ -147,79 +164,140 @@
         .c-coral    { --card-a: #ff758c; --card-b: #ff7eb3; }
         .c-slate    { --card-a: #334155; --card-b: #94a3b8; }
         .c-aqua     { --card-a: #00c6ff; --card-b: #0072ff; }
-        
+
         @media (max-width: 400px) {
-            .app-frame { padding: 20px 16px; }
-            .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .card .icon { font-size: 32px; }
-            .card .name { font-size: 13px; }
+            .app-frame {
+                padding: 20px 16px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .card .icon {
+                font-size: 32px;
+            }
+
+            .card .name {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 
 <body>
+
     <main class="app-frame">
+
         <h1>Proyectos</h1>
         <p class="subtitle">Selecciona un proyecto</p>
 
         <nav class="grid" aria-label="Lista de proyectos">
-            <a class="card" href="https://masaporaceleracion.es/">
-                <span class="icon" aria-hidden="true">🏋️</span><span class="name">Masa por Aceleración</span>
+
+            <a class="card c-blue" href="https://masaporaceleracion.es/">
+                <span class="icon" aria-hidden="true">🏋️</span>
+                <span class="name">Masa por Aceleración</span>
             </a>
+
             <a class="card c-purple" href="https://impulsema.vercel.app/">
-                <span class="icon" aria-hidden="true">🚀</span><span class="name">Impulse MA</span>
+                <span class="icon" aria-hidden="true">🚀</span>
+                <span class="name">Impulse MA</span>
             </a>
+
             <a class="card c-dark" href="https://josegg.com/">
-                <span class="icon" aria-hidden="true">👤</span><span class="name">JoseGG</span>
+                <span class="icon" aria-hidden="true">👤</span>
+                <span class="name">JoseGG</span>
             </a>
+
             <a class="card c-green" href="https://cutt.ly/kJ2H0NS">
-                <span class="icon" aria-hidden="true">⚽</span><span class="name">Gestor de escuelas CD Acfisal</span>
+                <span class="icon" aria-hidden="true">⚽</span>
+                <span class="name">Gestor de escuelas CD Acfisal</span>
             </a>
-            <a class="card" href="https://masaporaceleracion.es/josegg/">
-                <span class="icon" aria-hidden="true">🔗</span><span class="name">Enlaces MxA-JoseGG</span>
+
+            <a class="card c-magenta" href="https://masaporaceleracion.es/josegg/">
+                <span class="icon" aria-hidden="true">🔗</span>
+                <span class="name">Enlaces MxA-JoseGG</span>
             </a>
+
             <a class="card c-pink" href="https://joseggedu.vercel.app/">
-                <span class="icon" aria-hidden="true">🎮</span><span class="name">JoseGGEdu</span>
+                <span class="icon" aria-hidden="true">🎮</span>
+                <span class="name">JoseGGEdu</span>
             </a>
-            <a class="card c-dark" href="https://josegg.vercel.app/">
-                <span class="icon" aria-hidden="true">💼</span><span class="name">Portafolio</span>
+
+            <a class="card c-slate" href="https://josegg.vercel.app/">
+                <span class="icon" aria-hidden="true">💼</span>
+                <span class="name">Portafolio</span>
             </a>
-            <a class="card c-pink" href="https://plataformaexamenes.vercel.app">
-                <span class="icon" aria-hidden="true">📝</span><span class="name">ExamForge</span>
+
+            <a class="card c-coral" href="https://plataformaexamenes.vercel.app">
+                <span class="icon" aria-hidden="true">📝</span>
+                <span class="name">ExamForge</span>
             </a>
-            <a class="card" href="https://snipperlab.vercel.app/">
-                <span class="icon" aria-hidden="true">🗒️</span><span class="name">BN Online</span>
+
+            <a class="card c-yellow" href="https://snipperlab.vercel.app/">
+                <span class="icon" aria-hidden="true">🗒️</span>
+                <span class="name">BN Online</span>
             </a>
+
             <a class="card c-teal" href="https://webapk-builder.vercel.app/">
-                <span class="icon" aria-hidden="true">📦</span><span class="name">Web2APK Builder</span>
+                <span class="icon" aria-hidden="true">📦</span>
+                <span class="name">Web2APK Builder</span>
             </a>
+
             <a class="card c-indigo" href="https://appnotasprofe.vercel.app/">
-                <span class="icon" aria-hidden="true">📊</span><span class="name">AppNotas Profe</span>
+                <span class="icon" aria-hidden="true">📊</span>
+                <span class="name">AppNotas Profe</span>
             </a>
+
             <a class="card c-orange" href="https://multipercusion-rho.vercel.app/">
-                <span class="icon" aria-hidden="true">🥁</span><span class="name">Multipercusion</span>
+                <span class="icon" aria-hidden="true">🥁</span>
+                <span class="name">Multipercusion</span>
             </a>
-            <a class="card c-green" href="https://appprofesores.vercel.app/">
-                <span class="icon" aria-hidden="true">🎓</span><span class="name">AppProfesores</span>
+
+            <a class="card c-lime" href="https://appprofesores.vercel.app/">
+                <span class="icon" aria-hidden="true">🎓</span>
+                <span class="name">AppProfesores</span>
             </a>
-            <a class="card c-orange" href="https://itakadyr.com/">
-                <span class="icon" aria-hidden="true">🌅</span><span class="name">Ítaka DYR</span>
+
+            <a class="card c-sunset" href="https://itakadyr.com/">
+                <span class="icon" aria-hidden="true">🌅</span>
+                <span class="name">Ítaka DYR</span>
             </a>
-            <a class="card c-purple" href="TourDeJuegos/index.htm">
-                <span class="icon" aria-hidden="true">🕹️</span><span class="name">TourDeJuegos</span>
+
+            <a class="card c-berry" href="TourDeJuegos/index.htm">
+                <span class="icon" aria-hidden="true">🕹️</span>
+                <span class="name">TourDeJuegos</span>
             </a>
-            <a class="card c-orange" href="Tienda_online/index.php">
-                <span class="icon" aria-hidden="true">🛒</span><span class="name">Tienda Online</span>
+
+            <a class="card c-brown" href="Tienda_online/index.php">
+                <span class="icon" aria-hidden="true">🛒</span>
+                <span class="name">Tienda Online</span>
             </a>
-            <a class="card c-blue" href="https://erpescueladep.vercel.app/">
-                <span class="icon" aria-hidden="true">🏃‍♂️</span><span class="name">ERP Escuela Dep</span>
+
+            <a class="card c-red" href="https://erpescueladep.vercel.app/">
+                <span class="icon" aria-hidden="true">🏃‍♂️</span>
+                <span class="name">ERP Escuela Dep</span>
             </a>
-            <a class="card c-green" href="./selectorXele10.apk" download>
-                <span class="icon" aria-hidden="true">📱</span><span class="name">Selector Xele10 apk</span>
+
+            <a class="card c-forest" href="https://dockllm.jogg.workers.dev/">
+                <span class="icon" aria-hidden="true">✨</span>
+                <span class="name">DockLLM</span>
+            </a>
+
+            <a class="card c-ocean" href="https://kinesislab.netlify.app/">
+                <span class="icon" aria-hidden="true">🧬</span>
+                <span class="name">Kinesis</span>
+            </a>
+
+            <a class="card c-aqua" href="./selectorXele10.apk" download>
+                <span class="icon" aria-hidden="true">📱</span>
+                <span class="name">Selector Xele10 apk</span>
             </a>
 
         </nav>
-    </main>
-</body>
 
+    </main>
+
+</body>
 </html>
